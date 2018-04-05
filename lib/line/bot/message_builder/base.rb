@@ -26,6 +26,10 @@ module Line
         end
 
         private
+        
+        def instance_values
+          Hash[instance_variables.map { |name| [name[1..-1], instance_variable_get(name)] }]
+        end
 
         def verify_required
           self.class.required.each { |key, value| verify_instance_value_type key, value }
