@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "line/bot/message_builder/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "line-bot-message_builder"
+  spec.name          = "line-bot-message-builder"
   spec.version       = Line::Bot::MessageBuilder::VERSION
   spec.authors       = ["楊竑昕"]
   spec.email         = ["jk195417@gmail.com"]
