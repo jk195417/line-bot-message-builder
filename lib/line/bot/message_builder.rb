@@ -1,9 +1,5 @@
-require "line/bot/message_builder/version"
-
-module Line
-  module Bot
-    module MessageBuilder
-      # Your code goes here...
-    end
-  end
-end
+require 'line/bot/message_builder/version'
+require 'line/bot/message_builder/base'
+require 'line/bot/message_builder/message'
+require 'line/bot/message_builder/template'
+require 'line/bot/message_builder/action'
