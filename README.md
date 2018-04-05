@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-After bunlde success, include `Line::Bot::MessageBuilder` module first, and use shorter class name, or just use full module class name.
+After `bundle` success, require this gem into your ruby code(if you using Rails, you can create a initiializer `config/initiializers/line_bot` then add this line.)
+
+```ruby
+require 'line/bot/message_builder'
+```
+
+and include `Line::Bot::MessageBuilder` module if you want a shorter class name, or not and just use full module class name.
 
 ```ruby
 # full
