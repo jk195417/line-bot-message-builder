@@ -20,13 +20,14 @@ module Line
         def to_h
           result = {}
           instance_values.each do |key, value|
-            result[key.camelize(:lower)] = value unless value.nil?
+            snake_case_key = key.gsub(/([a-z\d])([A-Z])/, '\1_\2').tr('-', '_').downcase
+            result[snake_case_key] = value unless value.nil?
           end
           result
         end
 
         private
-        
+
         def instance_values
           Hash[instance_variables.map { |name| [name[1..-1], instance_variable_get(name)] }]
         end
