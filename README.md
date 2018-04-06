@@ -1,8 +1,6 @@
 # Line::Bot::MessageBuilder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/line/bot/message_builder`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Plain Old Ruby Object to [Line Messaging API](https://developers.line.me/en/docs/messaging-api/reference/#message-objects) hash format.
 
 ## Installation
 
@@ -22,28 +20,30 @@ Or install it yourself as:
 
 ## Usage
 
-After `bundle` success, require this gem into your ruby code(if you using Rails, you can create a initiializer `config/initiializers/line_bot` then add this line.)
+require it:
 
 ```ruby
 require 'line/bot/message_builder'
 ```
 
-and include `Line::Bot::MessageBuilder` module if you want a shorter class name, or not and just use full module class name.
+> if you using Rails, you can create a initiializer `config/initiializers/line_bot` and require
+
+include `Line::Bot::MessageBuilder` for use shorter class name or not:
 
 ```ruby
-# full
+# didn't include usage
 Line::Bot::MessageBuilder::Message::Text.new do |m|
   m.text= '123'
 end
 
-# or include Line::Bot::MessageBuilder first to use shorter class name
+# included usage
 include Line::Bot::MessageBuilder
 Message::Text.new do |m|
   m.text= '123'
 end
 ```
 
-more complex example
+more complex example:
 
 ```ruby
 Message::Template.new do |t|
@@ -62,7 +62,7 @@ Message::Template.new do |t|
 end
 ```
 
-finally use `to_h` method convert `MessageBuilder` instance to `hash`
+use `to_h` method convert `MessageBuilder` instance to `hash`:
 
 ```ruby
 m = Message::Template.new do |t|
@@ -95,8 +95,8 @@ m.to_h
 
 Example with [line-bot-sdk-ruby](https://github.com/line/line-bot-sdk-ruby) and service object.
 
+create a service object:
 
-create a service object in plain old ruby object
 ```ruby
 # services/line_bot_service
 class LineBotService
@@ -141,16 +141,12 @@ class LineBotService
 
   # messages and reactions
   def message1
-    # react
     do_something1
-    # return message
     Message::Text.new(text: 'message1')
   end
 
   def message2
-    # react
     do_something2
-    # return message
     Message::Template.new do |t|
       t.alt_text = 'message2'
       t.template = Template::Buttons.new do |b|
@@ -164,22 +160,18 @@ class LineBotService
   end
 
   def message3
-    # react
     do_something3
-    # return message
     Message::Text.new(text: 'message3')
   end
 
   def message4
-    # react
     do_something3
-    # return message
     Messages::Sticker.new(package_id: 1, sticker_id: 5)
   end
 end
 ```
 
-and using it like this in `Rails`
+and use it like this in Rails
 
 ```ruby
 # line_controller #webhook
@@ -189,6 +181,29 @@ def webhook
   render plain: 'Success', status: 200
 end
 ```
+
+## TODO
+
+* [ ] messages
+  * [x] image
+  * [x] text
+  * [x] video
+  * [x] audio
+  * [x] sticker
+  * [x] location
+  * [ ] template
+* [ ] templates
+  * [x] buttons
+  * [ ] confirm
+  * [ ] imagecarousel
+  * [ ] carousel
+* [ ] actions
+  * [x] message
+  * [x] postback
+  * [x] uri
+  * [ ] datetimepicker
+
+Feel free to create a PR to contribute.
 
 ## Development
 
