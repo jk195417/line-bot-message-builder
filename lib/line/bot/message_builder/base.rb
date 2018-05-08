@@ -20,8 +20,14 @@ module Line
         def to_h
           result = {}
           instance_values.each do |key, value|
-            snake_case_key = key.gsub(/([a-z\d])([A-Z])/, '\1_\2').tr('-', '_').downcase
-            result[snake_case_key] = value unless value.nil?
+            camelCase = key.split('_').map.with_index do |str, i|
+              if i == 0
+                str.downcase
+              else
+                str.capitalize
+              end
+            end.join
+            result[camelCase] = value unless value.nil?
           end
           result
         end

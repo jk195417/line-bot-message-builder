@@ -82,7 +82,7 @@ end
 
 m.to_h
 => {"type"=>"template",
- "alt_text"=>"example1",
+ "altText"=>"example1",
  "template"=>
   {"type"=>"buttons",
    "text"=>"example2",
